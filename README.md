@@ -98,7 +98,7 @@ To build a serverless, progressive web application (PWA) with React using a test
 - Then the app should provide an option to install it as a shortcut on the home screen.
 
 
-## Feature 6: Display Charts Visualizing Event Details
+### Feature 6: Display Charts Visualizing Event Details
 
 #### As a user, I should be able to see a chart showing the number of upcoming events in each city so that I can quickly understand the event distribution across different cities.
 
