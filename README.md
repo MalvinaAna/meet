@@ -107,3 +107,7 @@ To build a serverless, progressive web application (PWA) with React using a test
 - Given the user is viewing the event details;
 - When the event details are displayed;
 - Then the app should show a chart visualizing the number of upcoming events in each city.
+
+## Using serverless functions
+
+In this app, serverless functions handle tasks such as securely managing user access, obtaining and refreshing OAuth2 tokens, and ensuring secure interactions between the app and the Google Calendar API. Leveraging a serverless architecture provides several advantages including seamless scalability, optimal resource management, and cost-efficiency.
