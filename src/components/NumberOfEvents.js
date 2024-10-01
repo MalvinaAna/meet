@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const NumberOfEvents = ({ onNumberChange }) => {
-  const [numberEvents, setNumberEvents] = useState(32);
+const NumberOfEvents = ({ currentNOE, setCurrentNOE }) => {
+  const [numberEvents, setNumberEvents] = useState(currentNOE);
+
+  useEffect(() => {
+    setNumberEvents(currentNOE);
+  }, [currentNOE]);
 
   const handleInputChange = (e) => {
     const value = e.target.value;
     setNumberEvents(value);
+    setCurrentNOE(value); 
   };
 
   return (
@@ -18,6 +23,7 @@ const NumberOfEvents = ({ onNumberChange }) => {
         value={numberEvents}
         onChange={handleInputChange}
         aria-label="number of events"
+        data-testid="numberOfEventsInput"
       />
     </div>
   );

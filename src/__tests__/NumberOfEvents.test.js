@@ -1,11 +1,14 @@
-import { render } from '@testing-library/react';
+import { render, within } from '@testing-library/react';
 import NumberOfEvents from '../components/NumberOfEvents';
 import userEvent from '@testing-library/user-event';
+import App from '../App';
 
 describe('<NumberOfEvents /> component', () => {
 let NumberOfEventsComponent;
+let setCurrentNOE;
  beforeEach(() => {
-  NumberOfEventsComponent = render(<NumberOfEvents />);
+  setCurrentNOE = jest.fn(); 
+  NumberOfEventsComponent = render(<NumberOfEvents currentNOE={32} setCurrentNOE={setCurrentNOE} />);
  })
 
   test('renders textbox input for number of events', () => {
@@ -24,5 +27,21 @@ let NumberOfEventsComponent;
 
     await user.type(inputElement, '{backspace}{backspace}10');
     expect(inputElement).toHaveValue('10');
+  });
+});
+
+describe('<NumberOfEvents /> integration', () => {
+  test('the number of events changes based on the user input', async () => {
+    const user = userEvent.setup();
+    const AppComponent = render(<App />);
+    const AppDOM = AppComponent.container.firstChild;
+
+    const NumberOfEventsInput = within(AppDOM).getByTestId('numberOfEventsInput');
+
+    await user.type(NumberOfEventsInput, '{backspace}{backspace}10');
+
+    const EventListDOM = AppDOM.querySelector('#event-list');
+    const allRenderedEventItems = within(EventListDOM).queryAllByRole('listitem');
+    expect(allRenderedEventItems.length).toBe(10);
   });
 });
