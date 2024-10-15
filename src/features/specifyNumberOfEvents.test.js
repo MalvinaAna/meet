@@ -36,7 +36,7 @@ test('User can change the number of events displayed.', ({ given, when, then }) 
 
   when('the user changes the number of events to be displayed', async () => {
     const EventListDOM = AppComponent.querySelector('#event-list');
-      NumberOfEventsComponent = render(<NumberOfEvents setCurrentNOE={() => { }} />, { container: EventListDOM }); 
+      NumberOfEventsComponent = render(<NumberOfEvents setCurrentNOE={() => { }} setErrorAlert={() => {}} />, { container: EventListDOM }); 
       const user = userEvent.setup();
       const numberOfEvents = NumberOfEventsComponent.getByRole('textbox');
       await user.type(numberOfEvents, '{backspace}{backspace}10'); 

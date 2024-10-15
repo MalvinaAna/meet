@@ -8,7 +8,7 @@ let NumberOfEventsComponent;
 let setCurrentNOE;
  beforeEach(() => {
   setCurrentNOE = jest.fn(); 
-  NumberOfEventsComponent = render(<NumberOfEvents currentNOE={32} setCurrentNOE={setCurrentNOE} />);
+  NumberOfEventsComponent = render(<NumberOfEvents currentNOE={32} setCurrentNOE={setCurrentNOE} setErrorAlert={() => {}} />);
  })
 
   test('renders textbox input for number of events', () => {

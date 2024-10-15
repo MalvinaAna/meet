@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const NumberOfEvents = ({ currentNOE, setCurrentNOE }) => {
+const NumberOfEvents = ({ currentNOE, setCurrentNOE, setErrorAlert }) => {
   const [numberEvents, setNumberEvents] = useState(currentNOE);
 
   useEffect(() => {
@@ -10,7 +10,14 @@ const NumberOfEvents = ({ currentNOE, setCurrentNOE }) => {
   const handleInputChange = (e) => {
     const value = e.target.value;
     setNumberEvents(value);
+    let errorText;
+    if(isNaN(value) || value.length <= 0) { 
+      errorText = "Please enter a valid number"
+    } else {
+      errorText = ""
+    }
     setCurrentNOE(value); 
+    setErrorAlert(errorText);
   };
 
   return (
